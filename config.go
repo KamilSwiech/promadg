@@ -1,4 +1,4 @@
-package config
+package main
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 
 var ViperConfig Config
 
-func InitConfiguration(v *viper.Viper) error {
+func initConfiguration(v *viper.Viper) error {
 	v.SetConfigName("config")         // name of config file (without extension)
 	v.SetConfigType("yaml")           // REQUIRED if the config file does not have the extension in the name
 	v.AddConfigPath("/etc/promadg/")  // path to look for the config file in

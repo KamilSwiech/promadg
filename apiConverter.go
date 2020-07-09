@@ -1,4 +1,4 @@
-package promapi
+package main
 
 func ParseRequest(url string) {
 

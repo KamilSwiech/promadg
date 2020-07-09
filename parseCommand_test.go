@@ -1,4 +1,4 @@
-package cmd
+package main
 
 import (
 	"testing"
@@ -14,6 +14,5 @@ func TestInitCmds(t *testing.T) {
 	}
 	_ = tests
 
-
-	t.Errorf("TestFailed %s","BOIIIII")
+	t.Errorf("TestFailed %s", "BOIIIII")
 }

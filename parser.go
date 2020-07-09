@@ -1,4 +1,4 @@
-package jsonParser
+package main
 
 import (
 	"encoding/json"

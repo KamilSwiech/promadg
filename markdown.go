@@ -1,12 +1,11 @@
-package markdown
+package main
 
 import (
 	"fmt"
-	"kamilswiech/promadg/jsonParser"
 	"strings"
 )
 
-func AlertGroupsToMarkdown(alertGroups []jsonParser.AlertGroup) string {
+func AlertGroupsToMarkdown(alertGroups []AlertGroup) string {
 	var str strings.Builder
 	for _, v := range alertGroups {
 		AlertGroupToMarkdown(v, &str)
@@ -14,7 +13,7 @@ func AlertGroupsToMarkdown(alertGroups []jsonParser.AlertGroup) string {
 	return str.String()
 }
 
-func AlertGroupToMarkdown(alertGroup jsonParser.AlertGroup, str *strings.Builder) {
+func AlertGroupToMarkdown(alertGroup AlertGroup, str *strings.Builder) {
 	Heading1(alertGroup.Name, str)
 	for k, _ := range alertGroup.Rules {
 		rule := alertGroup.Rules[k]
