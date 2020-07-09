@@ -1,0 +1,8 @@
+# vim specific
+*.swp
+
+# go specific
+*.test
+*.out
+*.sum
+.idea
