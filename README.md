@@ -1,5 +1,14 @@
 # prometheus-alerts-doc-gen
 
+Generate prometheus rules and alerts into doc with markdown format
+
+> CREATION IN PROGRESS
+
+### TODO
+- tests
+- markdown config in tpl
+- full api support
+
 ### How to use
 The quickiest way to get output:
 ```
