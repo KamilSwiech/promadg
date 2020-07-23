@@ -83,8 +83,8 @@ func SetTime(data string) {
 
 func GetData(data string) {
 	fmt.Println("GetData")
-	if data == "rules" {
-	}
+	out := ParseRequest(data)
+	fmt.Println(out)
 }
 
 func GetTime(data string) {
