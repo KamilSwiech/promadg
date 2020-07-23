@@ -1,13 +1,14 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/spf13/viper"
 	"os"
 )
 
-func InitCmds(args []string, v *viper.Viper) error {
+func InitCmds(args []string) error {
 	getCmd := flag.NewFlagSet("get", flag.ExitOnError)
 	setCmd := flag.NewFlagSet("set", flag.ExitOnError)
 
@@ -16,7 +17,7 @@ func InitCmds(args []string, v *viper.Viper) error {
 	setTimePtr := setCmd.String("time", "", "Time interval for requesting data")
 
 	getDataPtr := getCmd.String("data", "", "Prometheus data to scrape")
-	getTimePtr := getCmd.String("time", "", "Get time interval which is used for scraping data")
+	getTimePtr := getCmd.Bool("time", false, "Get time interval which is used for scraping data")
 	getURLPtr := getCmd.String("url", "", "User url to request")
 
 	if len(args) < 2 {
@@ -34,7 +35,7 @@ func InitCmds(args []string, v *viper.Viper) error {
 		os.Exit(1)
 	}
 
-	var setFunc = func(data string, v *viper.Viper) {}
+	var setFunc = func(data string) {}
 	var getFunc = func(data string) {}
 	var data string
 	if setCmd.Parsed() {
@@ -48,14 +49,14 @@ func InitCmds(args []string, v *viper.Viper) error {
 			data = *setTimePtr
 			setFunc = SetTime
 		}
-		setFunc(data, v)
+		setFunc(data)
 	}
 	if getCmd.Parsed() {
 		if *getDataPtr != "" {
 			data = *getDataPtr
 			getFunc = GetData
-		} else if *getTimePtr != "" {
-			data = *getTimePtr
+		} else if *getTimePtr != false {
+			data = ""
 			getFunc = GetTime
 		} else if *getURLPtr != "" {
 			data = *getURLPtr
@@ -66,19 +67,19 @@ func InitCmds(args []string, v *viper.Viper) error {
 	return nil
 }
 
-func SetCtx(data string, v *viper.Viper) {
+func SetCtx(data string) {
 	fmt.Println("SetCtx")
-	v.Set("prometheus", data)
+	viper.Set("prometheus", data)
 }
 
-func SetConf(data string, v *viper.Viper) {
+func SetConf(data string) {
 	fmt.Println("SetConf")
-	v.Set("configuration", data)
+	viper.Set("configuration", data)
 }
 
-func SetTime(data string, v *viper.Viper) {
+func SetTime(data string) {
 	fmt.Println("SetTime")
-	v.Set("time", data)
+	viper.Set("time", data)
 }
 
 func GetData(data string) {
@@ -87,9 +88,20 @@ func GetData(data string) {
 
 func GetTime(data string) {
 	fmt.Println("GetTime")
-
+	fmt.Println(viper.GetString("time"))
 }
 
 func GetURL(data string) {
 	fmt.Println("GetURL")
+	response, err := SendRequest(data)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	body, err := GetJson(response)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(body))
 }

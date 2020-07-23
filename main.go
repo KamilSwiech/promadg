@@ -7,17 +7,12 @@ import (
 )
 
 func main() {
-	v := viper.New()
-	initConfiguration(v)
-	z, err := LoadContext(v)
-	fmt.Println(z.Prometheus)
+	initConfiguration()
 	// Subcommands
-	if err := InitCmds(os.Args, v); err != nil {
+	if err := InitCmds(os.Args); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	z, err = LoadContext(v)
-	fmt.Println(z.Prometheus)
 
 	url := "http://ksa-prometheus.blue/api/v1/rules?type=alert"
 	resp, err := SendRequest(url)
@@ -32,5 +27,5 @@ func main() {
 	alertGroups := JsonToAlertGroups(body)
 	_ = AlertGroupsToMarkdown(alertGroups)
 	//fmt.Println(markdown)
-	v.WriteConfig()
+	viper.WriteConfig()
 }
