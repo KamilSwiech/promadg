@@ -84,6 +84,8 @@ func SetTime(data string) {
 
 func GetData(data string) {
 	fmt.Println("GetData")
+	if data == "rules" {
+	}
 }
 
 func GetTime(data string) {

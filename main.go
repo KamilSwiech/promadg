@@ -24,8 +24,6 @@ func main() {
 	if err != nil {
 		return
 	}
-	alertGroups := JsonToAlertGroups(body)
-	_ = AlertGroupsToMarkdown(alertGroups)
-	//fmt.Println(markdown)
+	fmt.Println(body)
 	viper.WriteConfig()
 }
