@@ -18,3 +18,15 @@ func GetJson(resp *http.Response) ([]byte, error) {
 	body, err := ioutil.ReadAll(resp.Body)
 	return body, err
 }
+
+func GetRequest(url string) []byte {
+	resp, err := SendRequest(url)
+	if err != nil {
+		panic(err)
+	}
+	body, err := GetJson(resp)
+	if err != nil {
+		panic(err)
+	}
+	return body
+}

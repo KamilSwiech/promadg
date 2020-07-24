@@ -84,7 +84,9 @@ func SetTime(data string) {
 func GetData(data string) {
 	fmt.Println("GetData")
 	out := ParseRequest(data)
+	body := GetRequest(out)
 	fmt.Println(out)
+	fmt.Println(body)
 }
 
 func GetTime(data string) {
@@ -94,15 +96,6 @@ func GetTime(data string) {
 
 func GetURL(data string) {
 	fmt.Println("GetURL")
-	response, err := SendRequest(data)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	body, err := GetJson(response)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+	body := GetRequest(data)
 	fmt.Println(string(body))
 }
