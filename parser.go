@@ -13,9 +13,9 @@ func JsonToRulesPage(body []byte) RulesPage {
 	return rulesPage
 }
 
-func JsonToMD(rules RulesPage) {
+func RulesPageToMD(rules RulesPage) {
 	filename := viper.GetString("configuration")
-	tmpl, err := template.New("template").ParseFiles(filename)
+	tmpl, err := template.New(filename).ParseFiles(filename)
 	if err != nil {
 		panic(err)
 	}

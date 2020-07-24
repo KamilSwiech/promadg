@@ -84,9 +84,7 @@ func SetTime(data string) {
 func GetData(data string) {
 	fmt.Println("GetData")
 	out := ParseRequest(data)
-	body := GetRequest(out)
 	fmt.Println(out)
-	fmt.Println(body)
 }
 
 func GetTime(data string) {
