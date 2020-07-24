@@ -12,13 +12,13 @@ Generate prometheus rules and alerts into doc with markdown format
 ### How to use
 The quickiest way to get output:
 ```
-promadg get -data rules > output.json
+promadg get -data rules > output.md
 ```
 
 ### Commands
 * set:
     * context -- set config file with prometheus
-    * confing -- set config format file for parsing jsons
+    * config -- set config format file for parsing jsons
     * time -- set time for queries. Defaults to "now"
 * get:
     * data -- get selected data (rules, alerts)
