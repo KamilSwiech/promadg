@@ -1,4 +1,4 @@
-package main
+package parse
 
 type RulesPage struct {
 	Status string `json:"status"`

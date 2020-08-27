@@ -1,8 +1,9 @@
 package tpl
 
-func template () []byte {
+func DefaultTemplate() []byte {
 	return []byte(`
 {{ range .Data.Groups }}
 Name = {{ .Name }}
 {{ end }}
 `)
+}

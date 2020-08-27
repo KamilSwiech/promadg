@@ -2,6 +2,8 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/KamilSwiech/promadg/pkg/parse"
+	"github.com/KamilSwiech/promadg/pkg/promhandler"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -16,6 +18,9 @@ var (
 		Long: `Promadg allows to create customizable
                 documents from prometheus alerts/rules pages.`,
 		Run: func(cmd *cobra.Command, args []string) {
+			url := promhandler.BuildRulesUrl()
+			json := parse.GetJson(url)
+			parse.ParseJson(json)
 			_ = viper.WriteConfig()
 		},
 	}
