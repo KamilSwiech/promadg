@@ -1,4 +1,4 @@
-# prometheus-alerts-doc-gen
+# Prometheus Alerts Documentation Generator
 
 Generate prometheus rules and alerts into doc with markdown format
 
