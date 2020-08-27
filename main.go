@@ -1,17 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"github.com/spf13/viper"
-	"os"
+	"github.com/KamilSwiech/promadg/cmd"
 )
 
 func main() {
-	initConfiguration()
-	// Subcommands
-	if err := InitCmds(os.Args); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-	viper.WriteConfig()
+	cmd.Execute()
 }

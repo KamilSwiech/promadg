@@ -14,7 +14,10 @@ func JsonToRulesPage(body []byte) RulesPage {
 }
 
 func RulesPageToMD(rules RulesPage) {
-	filename := viper.GetString("configuration")
+	filename := viper.GetString("template")
+	if filename == "" {
+
+	}
 	tmpl, err := template.New(filename).ParseFiles(filename)
 	if err != nil {
 		panic(err)
