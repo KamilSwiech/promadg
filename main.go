@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/KamilSwiech/promadg/cmd"
+	"github.com/kamilswiec/promadg/cmd"
 )
 
 func main() {

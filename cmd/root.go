@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/KamilSwiech/promadg/pkg/parse"
-	"github.com/KamilSwiech/promadg/pkg/promhandler"
+	"github.com/kamilswiec/promadg/pkg/parse"
+	"github.com/kamilswiec/promadg/pkg/promhandler"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"

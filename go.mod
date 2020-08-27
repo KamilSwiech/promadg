@@ -1,4 +1,4 @@
-module github.com/KamilSwiech/promadg
+module github.com/kamilswiec/promadg
 
 go 1.14
 

@@ -2,7 +2,7 @@ package parse
 
 import (
 	"encoding/json"
-	"github.com/KamilSwiech/promadg/pkg/tpl"
+	"github.com/kamilswiec/promadg/pkg/tpl"
 	"github.com/spf13/viper"
 	"os"
 	"text/template"
