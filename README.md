@@ -6,21 +6,10 @@ Generate prometheus rules and alerts into doc with markdown format
 
 ### TODO
 - tests
-- markdown config in tpl
 - full api support
 
 ### How to use
 The quickiest way to get output:
 ```
-promadg get -data rules > output.md
+promadg -p your-prometheus-dns-name > output.md
 ```
-
-### Commands
-* set:
-    * context -- set config file with prometheus
-    * config -- set config format file for parsing jsons
-    * time -- set time for queries. Defaults to "now"
-* get:
-    * data -- get selected data (rules, alerts)
-    * url -- get provided url
-    * time -- get configured time
