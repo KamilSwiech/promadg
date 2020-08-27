@@ -16,7 +16,7 @@ var (
 		Long: `Promadg allows to create customizable
                 documents from prometheus alerts/rules pages.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			_ := viper.WriteConfig()
+			_ = viper.WriteConfig()
 		},
 	}
 )
