@@ -11,5 +11,5 @@ Generate prometheus rules and alerts into doc with markdown format
 ### How to use
 The quickiest way to get output:
 ```
-promadg -p your-prometheus-dns-name > output.md
+promadg -p your-prometheus-name.com > output.md
 ```
