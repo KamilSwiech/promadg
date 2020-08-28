@@ -16,11 +16,11 @@ var (
 		Use:   "promadg",
 		Short: "Promadg is prometheus alert documentation generator",
 		Long: `Promadg allows to create customizable
-                documents from prometheus alerts/rules pages.`,
+documents from prometheus alerts/rules pages.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			if viper.GetString("prometheus") == "" {
 				er(`prometheus needs to be specified. 
-				Use --prometheus flag or create config under path $HOME/.promag.yaml`)
+Use --prometheus flag or create config under path $HOME/.promag.yaml`)
 			}
 			url := promhandler.BuildRulesUrl()
 			json := parse.GetJson(url)
