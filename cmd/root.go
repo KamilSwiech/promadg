@@ -17,21 +17,23 @@ var (
 		Short: "Promadg is prometheus alert documentation generator",
 		Long: `Promadg allows to create customizable
 documents from prometheus alerts/rules pages.`,
-		Run: func(cmd *cobra.Command, args []string) {
-			if viper.GetString("prometheus") == "" {
-				er(`prometheus needs to be specified. 
-Use --prometheus (-p) flag or create config under path $HOME/.promag.yaml`)
-			}
-			url := promhandler.BuildRulesUrl()
-			json := parse.GetJson(url)
-			parse.ParseJson(json)
-			_ = viper.WriteConfig()
-		},
+		Run: GenerateDoc,
 	}
 )
 
 func Execute() error {
 	return rootCmd.Execute()
+}
+
+func GenerateDoc(cmd *cobra.Command, args []string) {
+	if viper.GetString("prometheus") == "" {
+		er(`prometheus needs to be specified.
+Use --prometheus (-p) flag or create config under path $HOME/.promag.yaml`)
+	}
+	url := promhandler.BuildRulesUrl()
+	json := parse.GetJson(url)
+	parse.ParseJson(json)
+	_ = viper.WriteConfig()
 }
 
 func init() {
