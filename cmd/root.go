@@ -20,7 +20,7 @@ documents from prometheus alerts/rules pages.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			if viper.GetString("prometheus") == "" {
 				er(`prometheus needs to be specified. 
-Use --prometheus flag or create config under path $HOME/.promag.yaml`)
+Use --prometheus (-p) flag or create config under path $HOME/.promag.yaml`)
 			}
 			url := promhandler.BuildRulesUrl()
 			json := parse.GetJson(url)
