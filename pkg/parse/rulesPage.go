@@ -11,15 +11,8 @@ type RulesPage struct {
 				Name     string `json:"name"`
 				Query    string `json:"query"`
 				Duration int    `json:"duration"`
-				Labels   struct {
-					App      string `json:"app"`
-					Severity string `json:"severity"`
-				} `json:"labels"`
-				Annotations struct {
-					Dashboard   string `json:"dashboard"`
-					Description string `json:"description"`
-					Summary     string `json:"summary"`
-				} `json:"annotations"`
+				Labels []interface{} `json:"labels"`
+				Annotations []interface{} `json:"annotations"`
 				Alerts []interface{} `json:"alerts"`
 				Health string        `json:"health"`
 				Type   string        `json:"type"`
