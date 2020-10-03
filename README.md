@@ -9,7 +9,7 @@ own custom format.
 ## Installation
 Download binary:
 ```
-curl -sSL 'https://github.com/kamilswiec/promadg/releases/download/0.0.1/promadg' -o /usr/local/bin/promadg
+curl -sSL 'https://github.com/kamilswiec/promadg/releases/download/0.0.2/promadg' -o /usr/local/bin/promadg
 chmod +x /usr/local/bin/promadg
 ```
 ## How to use
