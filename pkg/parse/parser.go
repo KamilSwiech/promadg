@@ -2,10 +2,11 @@ package parse
 
 import (
 	"encoding/json"
+	"github.com/Masterminds/sprig"
 	"github.com/kamilswiec/promadg/pkg/tpl"
 	"github.com/spf13/viper"
-	"github.com/Masterminds/sprig"
 	"os"
+	"path"
 	"text/template"
 )
 
@@ -29,7 +30,8 @@ func RulesPageToMD(rules RulesPage) {
 		tmpl = template.Must(
 			template.New("default").Funcs(fmap).Parse(defaultTpl))
 	} else {
-		tmpl = template.Must(template.New(filename).Funcs(fmap).ParseFiles(filename))
+		name := path.Base(filename)
+		tmpl = template.Must(template.New(name).Funcs(fmap).ParseFiles(filename))
 	}
 	err := tmpl.Execute(os.Stdout, rules)
 	if err != nil {
