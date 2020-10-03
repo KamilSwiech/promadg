@@ -18,8 +18,8 @@ The quickiest way to get output:
 promadg -p your-prometheus-name.com > output.md
 ```
 Results in:
-```
-# EXAMPLE
+
+# EXAMPLE GROUP
 ## NotUp
 ### Query:
 up < 1
@@ -28,7 +28,8 @@ up < 1
 >  severity: critical
 ### Annotations:
 >  description: Prometheus is down
-```
+
+
 ### Custom template
 You can provide your own template for Sprig with `-t` flag. For example:
 ```
