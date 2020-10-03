@@ -9,6 +9,7 @@ const (
 	Protocol  = "http://"
 	ApiPrefix = "/api/v1"
 	RulesPath = "/rules"
+	AlertType = "?type=alert"
 )
 
 func BuildRulesUrl() string {
@@ -18,5 +19,6 @@ func BuildRulesUrl() string {
 	str.WriteString(prometheus)
 	str.WriteString(ApiPrefix)
 	str.WriteString(RulesPath)
+	str.WriteString(AlertType)
 	return str.String()
 }

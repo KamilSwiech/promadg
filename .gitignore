@@ -6,3 +6,6 @@
 *.out
 *.sum
 .idea
+
+# prometheus yamls
+.prometheus
