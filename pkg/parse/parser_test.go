@@ -5,6 +5,8 @@ import (
 )
 
 func TestRulesPageToMD(t *testing.T) {
-	var rp = RulesPage{}
+	var rp = RulesPage{
+		Status: "poc",
+	}
 	RulesPageToMD(rp)
 }
