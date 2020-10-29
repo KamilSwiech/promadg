@@ -2,6 +2,7 @@ package parse
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Masterminds/sprig"
 	"github.com/kamilswiec/promadg/pkg/tpl"
 	"github.com/spf13/viper"
@@ -10,18 +11,21 @@ import (
 	"text/template"
 )
 
-func ParseJson(body []byte) {
-	rulesPage := JsonToRulesPage(body)
-	RulesPageToMD(rulesPage)
+func ParseJson(body []byte) error {
+	rulesPage, err := JsonToRulesPage(body)
+	if err != nil {
+		return fmt.Errorf("Failed to parse json: %s", err)
+	}
+	return RulesPageToMD(rulesPage)
 }
 
-func JsonToRulesPage(body []byte) RulesPage {
+func JsonToRulesPage(body []byte) (RulesPage, error) {
 	var rulesPage RulesPage
-	json.Unmarshal([]byte(body), &rulesPage)
-	return rulesPage
+	err := json.Unmarshal([]byte(body), &rulesPage)
+	return rulesPage, err
 }
 
-func RulesPageToMD(rules RulesPage) {
+func RulesPageToMD(rules RulesPage) error {
 	filename := viper.GetString("template")
 	var tmpl *template.Template
 	fmap := sprig.TxtFuncMap()
@@ -33,8 +37,5 @@ func RulesPageToMD(rules RulesPage) {
 		name := path.Base(filename)
 		tmpl = template.Must(template.New(name).Funcs(fmap).ParseFiles(filename))
 	}
-	err := tmpl.Execute(os.Stdout, rules)
-	if err != nil {
-		panic(err)
-	}
+	return tmpl.Execute(os.Stdout, rules)
 }

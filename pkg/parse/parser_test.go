@@ -8,5 +8,7 @@ func TestRulesPageToMD(t *testing.T) {
 	var rp = RulesPage{
 		Status: "poc",
 	}
-	RulesPageToMD(rp)
+	if err := RulesPageToMD(rp); err != nil {
+		t.Error(err)
+	}
 }

@@ -1,5 +1,6 @@
 # vim specific
 *.swp
+*.swo
 
 # go specific
 *.test

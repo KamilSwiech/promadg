@@ -22,7 +22,11 @@ documents from prometheus alerts/rules pages.`,
 )
 
 func Execute() error {
-	return rootCmd.Execute()
+	if err := rootCmd.Execute(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+	return nil
 }
 
 func GenerateDoc(cmd *cobra.Command, args []string) {
@@ -32,7 +36,10 @@ Use --prometheus (-p) flag or create config under path $HOME/.promag.yaml`)
 	}
 	url := promhandler.BuildRulesUrl()
 	json := parse.GetJson(url)
-	parse.ParseJson(json)
+	err := parse.ParseJson(json)
+	if err != nil {
+		er(err)
+	}
 	_ = viper.WriteConfig()
 }
 
